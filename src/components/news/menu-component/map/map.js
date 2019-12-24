@@ -90,14 +90,14 @@ export default class MapNews extends Component {
         />
         <ReactLeafletSearch
           customProvider={this.provider}
-          position="bottomright"
+          position="topleft"
           inputPlaceholder="検索"
           search = {[]}
           showMarker={true}
           zoom={14}
           showPopup={true}
-          closeResultsOnClick={false}
-          openSearchOnLoad={true}
+          closeResultsOnClick={true}
+          openSearchOnLoad={false}
         />
         </Map>
       </div>
