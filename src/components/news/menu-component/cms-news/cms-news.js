@@ -26,7 +26,7 @@ export default class CMSNews extends Component {
                     {moment(data.created_at).locale('ja').format("MMMDo")}
                   </div>
                   <div className="cms-date-time">
-                    {moment(data.created_at).locale('ja').format("hh:mm:ss")}
+                    {moment(data.created_at).locale('ja').format("HH:mm:ss")}
                   </div> 
                 </div>
                 <div className="cms-content">
