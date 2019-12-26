@@ -6,7 +6,7 @@ import createSagaMiddleware from "redux-saga";
 import AOS from 'aos';
 import rootReducer from "./reducers";
 import rootSaga from "./sagas";
-import * as serviceWorker from "./services/serviceWorker";
+import * as serviceWorker from "./serviceWorker";
 import App from "./components/app/App";
 
 import "./index.css";

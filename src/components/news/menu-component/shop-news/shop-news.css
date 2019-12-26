@@ -99,12 +99,16 @@ button:focus {
     font-size: 25px;
     width: 70%;
   }
+
+  .shop-news {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 500px) {
   .shop-news {
     display: block;
-    width: 330px;
+    width: 98%;
   }
 
   .shop-head {

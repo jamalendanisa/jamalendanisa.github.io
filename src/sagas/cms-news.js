@@ -1,20 +1,19 @@
 import { put, takeEvery, call } from "redux-saga/effects";
 import { getCMSNews } from "../actions";
+import axios from "axios";
 
 export function getCMSNewsAPI() {
  
   const url = '/news/?page=0&limit=10';
 
-  let http = new XMLHttpRequest();                
-  http.open("get", url, false, 'idealump', 'idealump');
-  http.withCredentials = true;
-  http.send("");
+  const config = {
+    auth: {
+      username: 'idealump',
+      password: 'idealump'
+    } 
+  };
 
-  if (http.status === 200) {
-    return JSON.parse(http.response);
-  } else {
-    console.log("Authentication failed.");
-  }
+  return axios.get(url, config)
 } 
  
 export function* getCMSNewsRequest() {
@@ -24,7 +23,7 @@ export function* getCMSNewsRequest() {
     if (response) {
       yield put(
         getCMSNews.success({
-          cmsNews: response.rows
+          cmsNews: response.data.rows
         }),
       );
     };

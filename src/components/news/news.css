@@ -255,24 +255,43 @@ ul li {
 
   .tokyo-icon{
     width: 3%;
-    right: -7%;
+    right: 0
   }
 
   video {
-    margin-left: -21px;
+    margin-left: -20px;
     margin-top: -10px;
-    width: 114%;
+    width: 105.5%;
   }
 
   .video {
     margin-left: -20px;
-    width: 103%;
-    margin-top: 0;
+    width: 100%;
+    margin-top: -8px;
   }
 }
 
 @media only screen and (max-width: 500px) {
-  .menu-section{
+  .menu-section {
     margin-left: 0;
    }
+
+  video {
+    width: 110.5%;
+  }
+
+  .footer {
+    display: block;
+  }
+
+  .footer ul {
+    margin: auto;
+    width: 56%;
+  }
+
+  .copywright {
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+  }
 }

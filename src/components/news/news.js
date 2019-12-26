@@ -1,7 +1,9 @@
 import React,  { Component } from "react";
 import { connect } from "react-redux";
 import { func } from "prop-types";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
+import LazyLoad from "react-lazyload";
+
 import { getWeather, getShopNews, getCMSNews } from "../../actions";
 import Weather from "./menu-component/weather/weather";
 import MapNews from "./menu-component/map/map";
@@ -37,11 +39,15 @@ class News extends Component {
         newsComponent.classList.add('fade-in');
       }
     }, 5000); 
-    
+  }
+
+  componentDidUpdate = () => {
     let video = document.querySelector("#video");
-    video.addEventListener("playing", function() {
-        document.querySelector('.video').style.opacity = 0;
-    });
+    if (video) {
+      video.addEventListener("playing", function() {
+          document.querySelector('.video').style.opacity = 0;
+      });
+    }
   }
 
   setActive = i =>{
@@ -129,10 +135,21 @@ class News extends Component {
             } 
         </div>
         <div data-aos="fade-in">
-          <img className="video" src="images/placeholder.png" alt=""/>
-          <video id="video" preload="auto" autobuffer="" autoPlay muted playsInline loop>
-            <source src="video/idealump.webm" type="video/webm"/>
-          </video>
+          <img className="video" 
+          src="images/placeholder.png" alt=""/>
+          <LazyLoad once={true}>
+            <video 
+              id="video" 
+              data-setup='{}'
+              preload="auto"
+              autobuffer="" 
+              autoPlay 
+              muted 
+              playsInline 
+              loop>
+              <source src="https://res.cloudinary.com/idealump/video/upload/v1577330844/idealump_kibf41.webm" type="video/webm"/>
+            </video>
+          </LazyLoad>
         </div>
         <div className="menu-section">
           <Weather

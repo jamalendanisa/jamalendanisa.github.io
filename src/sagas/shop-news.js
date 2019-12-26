@@ -1,30 +1,31 @@
 import { put, takeEvery, call } from "redux-saga/effects";
 import { getShopNews } from "../actions";
-import "../services/shopNews";
+import moment from "moment"
+import axios from "axios";
 
 export function getShopNewsAPI() {
   const url = '/datascraped';
 
-  var http = new XMLHttpRequest();                   
-  http.open("get", url, false, 'idealump', 'idealump');
-  http.withCredentials = true;
-  http.send("");
-  if (http.status === 200) {
-      return JSON.parse(http.response);
-  } else {
-      console.log("Authentication failed.");
-  }
+  const config = {
+    auth: {
+      username: 'idealump',
+      password: 'idealump'
+    } 
+   };
+
+  return axios.get(url, config)
 }
 
 export function* getShopNewsRequest() {
   try {
-    //const response = yield call(getShopNewsAPI);
-    let response = window.SeedShopNews.data;
-    //console.log(response)
+    const response = yield call(getShopNewsAPI);
+    let data = JSON.parse(response.data[0].data);
+    data.sort((a, b) => (moment(a.date) < moment(b.date)) ? 1 : -1);
+    
     if (response) {
       yield put(
         getShopNews.success({
-          shopNews: response
+          shopNews: data
         }),
       );
     };

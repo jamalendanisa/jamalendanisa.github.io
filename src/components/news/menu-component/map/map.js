@@ -75,12 +75,12 @@ export default class MapNews extends Component {
     return (
       <div id='地図' className="map-container">
         <h2 className="map-title">世界地図</h2>　
-        <Map style={{height: "500px", width: "98%"}}
+        <Map style={{height: "500px"}}
           onLocationfound={this.handleLocationFound}
           ref={(ref) => this.mapRef = ref}
           center={this.state.latlng}
           zoom={this.state.zoom}
-          className="newsmap"
+          className="news-map"
           scrollWheelZoom={true}
           onClick={this.handleClick}
         > 
