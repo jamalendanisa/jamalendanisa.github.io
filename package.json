@@ -5,7 +5,7 @@
   "author": "Anisa Jamalenda",
   "dependencies": {
     "aos": "^3.0.0-beta.6",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "leaflet": "^1.6.0",
     "mapbox-gl": "^1.6.1",
     "mapbox-gl-leaflet": "0.0.11",
