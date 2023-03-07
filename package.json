@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "react-localize-redux": "^3.5.3"
   }
 }
