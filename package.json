@@ -1,5 +1,6 @@
 {
   "name": "idealumpfrontend",
+  "homepage": "https://jamalendanisa.github.io/",
   "version": "1.0.0",
   "private": true,
   "author": "Anisa Jamalenda",
@@ -27,8 +28,10 @@
   },
   "proxy": "https://idealump-news.cleverapps.io",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts --openssl-legacy-provider build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
