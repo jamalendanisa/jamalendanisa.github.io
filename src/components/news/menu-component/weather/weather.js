@@ -18,7 +18,18 @@ export default class Weather extends Component {
 
         <div className="weather-list">
         {!pending && !error && weather &&
-          weather.daily.data.map((weather,i) => {
+          weather?.list.map((weather,i) => {
+            let weather_icon = weather.weather[0].main.toUpperCase()
+       
+            if(weather_icon === "CLOUDS")
+              weather_icon = weather_icon.replace("CLOUDS", "CLOUDY");
+            if(weather_icon === "CLEAR") {
+              const currentHour = moment.tz(weather.dt, 'X', 'Asia/Tokyo').locale('ja').format("H")
+              if ( currentHour < 18 )
+                weather_icon = weather_icon.replace("CLEAR", "CLEAR_DAY");
+              else
+                weather_icon = weather_icon.replace("CLEAR", "CLEAR_NIGHT");
+            }
             return (
               <div key={i}
                 data-aos="fade-up"
@@ -27,20 +38,24 @@ export default class Weather extends Component {
                 data-aos-mirror="true"
                 className={ i % 2 === 0 ? 'weather-box' : 'weather-box down'} >
 
-                <ReactAnimatedWeather
-                  icon={weather.icon.replace(/-/g, '_').toUpperCase()}
-                  color={'white'}
-                  size= {80}
-                  animate= {true}
-                />
-
-                <div className="weather-date">
-                  {moment.tz(weather.time, 'X', 'Asia/Tokyo').locale('ja').format("MMM Do")}
+                <div className="weather-i">
+                  <ReactAnimatedWeather
+                    icon={weather_icon}
+                    color={'white'}
+                    size= {80}
+                    animate= {true}
+                  />
+                  <div>
+                   {weather.weather[0].main.toUpperCase()}
+                  </div>
                 </div>
-                <div className="weather-summary">{weather.summary}</div>
+                <div className="weather-date">
+                  {moment.tz(weather.dt, 'X', 'Asia/Tokyo').locale('ja').format("MMM Do ha z")}
+                </div>
+                <div className="weather-summary">{weather.weather.description}</div>
                 <div className="weather-temp"> 
-                  <div>高温: {weather.temperatureHigh}°C</div>
-                  <div>低温: {weather.temperatureLow}°C</div>
+                  <div>高温: {weather.main.temp_max}°C</div>
+                  <div>低温: {weather.main.temp_min}°C</div>
                 </div>
              </div>
             )

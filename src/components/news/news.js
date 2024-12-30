@@ -116,7 +116,7 @@ class News extends Component {
       <div className="news-component">
         <div className="news-header">
           <img className="logo" src="images/logo.png" alt=""/>
-          <h1 className="headline" data-aos="fade-down">Idealump Test Page</h1>
+          <h1 className="headline" data-aos="fade-down">Jamalenda Test Page</h1>
           <img className="tokyo-icon" src="images/tokyo.png" alt=""/>
         </div>
         <div className="menu">
@@ -183,7 +183,7 @@ class News extends Component {
               </a>
             </li>
           </ul>
-          <div className="copywright">©2019 ideaLump inc.</div>
+          <div className="copyright">©2024 jamalenda</div>
         </div>
       </div>
     );

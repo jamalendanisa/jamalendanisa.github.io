@@ -26,12 +26,11 @@
     "redux-saga-routines": "^3.2.2",
     "video.js": "^7.0.3"
   },
-  "proxy": "https://idealump-news.cleverapps.io",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts --openssl-legacy-provider build",
+    "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

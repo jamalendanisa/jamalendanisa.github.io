@@ -4,7 +4,7 @@ import LazyLoad from "react-lazyload";
 import "./shop-news.css";
 
 export default class ShopNews extends Component {
- 
+
   readMore = i => {
     const readMore = document.querySelectorAll(".read-more"); 
     const detail = document.querySelectorAll(".shop-detail"); 
@@ -17,38 +17,6 @@ export default class ShopNews extends Component {
       readMore[i].innerHTML = "もっとみる"
     } 
   }
-
-// This code below is for checking if news contents is overflowing or not
-// and the folowing code is for hiding read-more button if the content isn't overflowing
-// It works but when the read-more has been clicked then the button also disappear 
-// Because the content is not overflowing anymore
-// I apologize but I will hold this issue because I still couldn't figuring out the way
-// Will surely find the way after i submitted the project first
-// *I will still updating this project until it gets better
-
-//   isOverflown = (i) => {
-//     let details = document.querySelectorAll('.shop-detail');
-//      if(details[i]){   
-//       return details[i].scrollHeight > details[i].clientHeight || details[i].scrollWidth > details[i].clientWidth;
-// 　　 }
-//   }
-
-//   componentDidUpdate () {
-
-//   let details = document.querySelectorAll('.shop-detail');
-//   let readMore = document.querySelectorAll('.read-more');
-//   if(details){
-//   details.forEach((detail,i)=>{
-//     if(detail){  
-//       if(!this.isOverflown(i)){
-//         readMore[i].style.display = "none";
-//       }else {
-//         readMore[i].style.display = "block";
-//       }    
-//     }
-//   })
-//  }
-// }
 
   render = () => {
     const { shopNews, pending, error } = this.props;
@@ -75,7 +43,7 @@ export default class ShopNews extends Component {
                     </div>
                     <div className="shop-detail close">{shop.detail}</div>
                   </div>
-                  <div className="read-more-cont">
+                  <div className="read-more-cont" ref={ref => (this.span = ref)}>
                     <button onClick={()=>this.readMore(i)}
                       className="read-more">もっとみる</button>
                   </div>
